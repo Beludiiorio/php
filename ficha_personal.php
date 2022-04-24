@@ -3,6 +3,7 @@ $nombre = "Belen";
 $apellido = "Di iorio Ramirez";
 $edad = 25;
 $fecha = date("d/m/y");
+$aPelículas = array ("El practicante", "Tengo ganas de ti", "Contratiempo");
 ?>
 
 
@@ -43,11 +44,11 @@ $fecha = date("d/m/y");
                             <td> <?php echo $edad; ?></td>
                         </tr>
                         <tr>
-                            <th>Peliculas favoritas:</th>
-                            <td>El practicante <br>
-                                Tengo ganas de ti <br>
-                                Contratiempo <br>
-                                3 metros sobre el cielo
+                            <th> Películas favoritas </th>
+                            <td>
+                                <?php echo $aPeliculas [0]; ?> <br>
+                                <?php echo $aPeliculas [1]; ?> <br>
+                                <?php echo $aPeliculas [2]; ?> 
                             </td>
                         </tr>
                     </tbody>

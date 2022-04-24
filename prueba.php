@@ -7,9 +7,19 @@
     <title>Prueba</title>
 </head>
 <body>
-   <?php #creacion de variables
+   <?php //creacion de variables//
    echo "Hola Mundo <br>";
    echo date("d/m/Y") ;
    ?>
 </body>
 </html> 
+
+<?php 
+
+$miArray= array ();
+$miArray[0]= "Hola"
+$miArray[37]= "Chau"
+print_r($miArray);
+?>
+
+
