@@ -1,8 +1,13 @@
 <?php
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
+
+$fecha = date("d/m/y");
 $nombre = "Belen";
 $apellido = "Di iorio Ramirez";
 $edad = 25;
-$fecha = date("d/m/y");
 $aPelículas = array ("El practicante", "Tengo ganas de ti", "Contratiempo");
 ?>
 
