@@ -14,12 +14,10 @@
 </body>
 </html> 
 
-<?php 
 
-$miArray= array ();
-$miArray[0]= "Hola"
-$miArray[37]= "Chau"
-print_r($miArray);
+<?php
+
+for ($i = 0; $i <=10; $i++) {
+    echo $i ."<br>";
+}
 ?>
-
-
