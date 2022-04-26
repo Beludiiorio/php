@@ -36,3 +36,11 @@ for ($i=0; $i<=100; $i+=2) {
     echo $i. "<br>";
 }
 ?>
+
+<!-- Otro ejemplo con for -->
+
+<?php
+for ($i=0; $i<=100 && $i != 60; $i+=2) {
+    echo $i . "<br>";
+}
+?>
