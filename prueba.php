@@ -21,3 +21,18 @@ for ($i = 0; $i <=10; $i++) {
     echo $i ."<br>";
 }
 ?>
+
+<?php
+
+for ($i = 0; $i <count($aProductos); $i++) {
+echo $aProductos[$i]["nombre"];
+}
+?>
+
+
+<!-- Otro ejemplo de for -->
+<?php
+for ($i=0; $i<=100; $i+=2) {
+    echo $i. "<br>";
+}
+?>
