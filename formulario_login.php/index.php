@@ -29,7 +29,7 @@ if($_POST){ /* es postback ? */
     <div class="container">
         <div class="row">
             <div class="col-12 mt-5">
-                <h1>Formulario</h1>
+                <h1>Formulario: </h1>
             </div>
         </div>
         <div class="row">
