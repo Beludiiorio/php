@@ -31,7 +31,7 @@ function promediar($aNumeros)
     <main class="container">
         <div class="row">
             <div class="col-12 text-center">
-                <h1 class="py-5">Actas</h1>
+                <h1 class="py-5"> Listado de alumnos:</h1>
             </div>            
             <div class="col-12">
                 <table class="table table-dark table-hover border">
@@ -64,7 +64,7 @@ function promediar($aNumeros)
             </div>
             <div class="row">
                 <div class="col-12">
-                    <p>Promedio de la cursada: <?php echo number_format($promedioCursada, 2, ",", "."); ?> </p>
+                    <h4>Promedio de la cursada: <?php echo number_format($promedioCursada, 2, ",", "."); ?> </h5>
                 </div>
             </div>
 
