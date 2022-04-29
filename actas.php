@@ -41,7 +41,7 @@ function promediar($aNumeros){
         </div>
         <div class="row">
             <div class="col-12">
-                <table class="table table-hover border">
+                <table class="table table-dark table-hover border">
                     <thead>
                         <tr>
                             <th>ID</th>
@@ -74,7 +74,7 @@ function promediar($aNumeros){
         </div>
         <div class="row">
             <div class="col-12 my-3">
-                <h3>Promedio de la cursada: <?php echo number_format($sumPromedios / count($aAlumnos), 2, ",", "."); ?></h3>
+                <h4>Promedio de la cursada: <?php echo number_format($sumPromedios / count($aAlumnos), 2, ",", "."); ?></h4>
             </div>
         </div>
     </main>
