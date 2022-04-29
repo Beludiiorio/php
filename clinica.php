@@ -47,7 +47,7 @@ $aPacientes[] = array(
     </div>
     <div class="row">
         <div class="col-12">
-            <table class="table table-hover border">
+            <table class="table table-dark table-hover border">
                 <tr>
                     <th>DNI</th>
                     <th>Nombre y apellido</th>

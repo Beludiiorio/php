@@ -33,7 +33,7 @@ $aPelículas = array ("El practicante", "Tengo ganas de ti", "Contratiempo");
         </div>
         <div class="row">
             <div class="col-12">
-                <table class="table table-hover border">
+                <table class="table table-dark table-hover border">
                     <tbody>
                         <tr>
                             <th>Fecha:</th>
@@ -50,9 +50,8 @@ $aPelículas = array ("El practicante", "Tengo ganas de ti", "Contratiempo");
                         </tr>
                         <tr>
                             <th> Películas favoritas </th>
-                            <td>
-                                <?php echo $aPeliculas [0]; ?> <br>
-                                <?php echo $aPeliculas [1]; ?> <br>
+                            <td><?php echo $aPeliculas [0] ."<br>"; ?> 
+                                <?php echo $aPeliculas [1] ."<br>"; ?> 
                                 <?php echo $aPeliculas [2]; ?> 
                             </td>
                         </tr>
