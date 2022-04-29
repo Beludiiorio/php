@@ -3,7 +3,8 @@ ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
-//Definición de array de alumnos
+//Definición de array de alumnos:
+
 $aAlumnos = array();
 $aAlumnos[] = array("nombre" => "Juan Perez", "aNotas" => array(9, 8));
 $aAlumnos[] = array("nombre" => "Ana Valle", "aNotas" => array(4, 9));
