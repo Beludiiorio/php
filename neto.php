@@ -9,6 +9,6 @@ function calcularNeto($bruto){
 }
 
 //Uso
-echo "El sueldo neto es " . calcularNeto(80000);
+echo "El sueldo neto es $" . calcularNeto(80000);
 
 ?>
