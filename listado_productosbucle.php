@@ -56,10 +56,12 @@ $aProductos[] = array(
                         <th>Precio</th>
                         <th>Acción</th>
                     </tr>
+
                     <?php
                     $contador = 0;
-                    while ($contador < 3) {
+                    while ($contador < count ($aProductos)){  //El count me devuelve la cantidad de elementos que tenga en mi array  
                     ?>
+                    
                         <tr>
                             <td><?php echo $aProductos[$contador]["nombre"]; ?></td>
                             <td><?php echo $aProductos[$contador]["marca"]; ?></td>
