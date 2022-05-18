@@ -22,9 +22,7 @@ function contar($aArray){
     return $cont;
 }
 
-#Uso
-echo "Cantidad de productos: " . contar($aProductos) . "<br>";
-echo "Cantidad de pacientes: " . contar($aEmpleados) . "<br>";
+#Uso:
 echo "Cantidad de notas: " . contar($aNotas);
 
 ?>
