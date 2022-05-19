@@ -21,8 +21,8 @@ error_reporting(E_ALL);
 <div class="alert alert-primary" role="alert">
  Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat quaerat modi dolorem iure natus harum quidem fugiat id quia tempora eveniet, reiciendis dolore consectetur ullam consequuntur quae eligendi repudiandae laborum.
 </div>
-<div class="py-3">
-<button type="submit" class="btn btn-primary border"> Salir </button>
+<div class="d-flex justify-content-end p-2" >
+<button class="btn btn-primary"><a href="index.php" style="color: white;">Salir</a></button>
 </div>
 </body>
 </html>
