@@ -17,7 +17,7 @@ error_reporting(E_ALL);
 </head>
 <body>
 
-<h1> Bienvenid@ al sistema </h1>
+<h1 class="text-center p-3"> Bienvenid@ al sistema </h1>
 <div class="alert alert-primary" role="alert">
  Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat quaerat modi dolorem iure natus harum quidem fugiat id quia tempora eveniet, reiciendis dolore consectetur ullam consequuntur quae eligendi repudiandae laborum.
 </div>
