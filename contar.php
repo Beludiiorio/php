@@ -51,4 +51,3 @@ echo "Cantidad de pacientes es: ". contar($aPacientes) . "<br>";
 echo "Cantidad de empleados es: ". contar($aEmpleados) . "<br>";
 echo "Cantidad de notas es: ". contar($aNotas);
 
-?>
