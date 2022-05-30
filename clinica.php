@@ -1,10 +1,10 @@
-<?php
-ini_set('display_errors', 1);
+<?php //Abro php
+ini_set('display_errors', 1); //Lineas para registrar los errores
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
-$aPacientes = array();
-$aPacientes[] = array(
+$aPacientes = array(); //Declaro mi array
+$aPacientes[] = array( //Mi array numerico a su vez tiene un array asociativo
     "dni" => "33.765.012",
     "nombre" => "Ana Acuña",
     "edad" => 45,
@@ -30,17 +30,17 @@ $aPacientes[4] = array(
     "peso" => 79
 );
 
-?>
+?> <!--Cierro php -->
 
-<!DOCTYPE html>
-<html lang="es">
+<!DOCTYPE html> <!-- Abro html-->
+<html lang="es"> <!--Le indicamos el idioma -->
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> Listado de pacientes </title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+<head>  <!-- Es la configuracion que le indicamos al ordenador -->
+    <meta charset="UTF-8">  <!--Para que acepte los caracteres del español -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"> <!-- Para que sea compatible con microsoft edge-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">  <!-- Para que las paginas sean responsivas -->
+    <title> Listado de pacientes </title>  <!--Titulo de la pestaña -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous"> <!--Bootstrap-->
 </head>
 
 <body>
