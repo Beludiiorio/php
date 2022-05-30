@@ -61,7 +61,7 @@ $aPacientes[3] = array(
                         <th> Peso </th>
                     </tr>
 
-                    <?php foreach ($aPacientes as $pos => $paciente) { //Empieza el bucle 
+                    <?php foreach ($aPacientes as $paciente) { //Empieza el bucle 
 
 
                     ?>
