@@ -4,26 +4,26 @@ ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
 $aPacientes = array(); //Declaro mi array
-$aPacientes[] = array( //Mi array numerico a su vez tiene un array asociativo
+$aPacientes[0] = array( //Mi array numerico a su vez tiene un array asociativo
     "dni" => "33.765.012",
     "nombre" => "Ana Acuña",
     "edad" => 45,
     "peso" => 81.50,
 );
 
-$aPacientes[2] = array(
+$aPacientes[1] = array(
     "dni" => "23.684.385",
     "nombre" => "Gonzalo Bustamante",
     "edad" => 66,
     "peso" => 79
 );
-$aPacientes[3] = array(
+$aPacientes[2] = array(
     "dni" => "23.684.386",
     "nombre" => "Juan Iraola",
     "edad" => 28,
     "peso" => 70
 );
-$aPacientes[4] = array(
+$aPacientes[3] = array(
     "dni" => "23.684.792",
     "nombre" => "Beatriz Ocampo",
     "edad" => 50,
@@ -44,8 +44,8 @@ $aPacientes[4] = array(
 </head>
 
 <body>
-    <main>
-        <div class="container">
+    <main class="container">
+        <div class="row">
             <div class="col-12 text-center py-3">
                 <h1> Listado de pacientes </h1>
             </div>
@@ -54,7 +54,7 @@ $aPacientes[4] = array(
         <div class="row">
             <div class="col-12">
                 <table class="table table-hover border">
-                    <tr>
+                    <tr class="text-center">
                         <th> DNI</th>
                         <th>Nombre y apellido </th>
                         <th> Edad </th>
@@ -65,7 +65,7 @@ $aPacientes[4] = array(
 
 
                     ?>
-                        <tr>
+                        <tr class="text-center">
                             <td><?php echo $paciente["dni"];  ?></td>
                             <td> <?php echo $paciente["nombre"]; ?></td>
                             <td> <?php echo $paciente["edad"]; ?></td>
