@@ -59,8 +59,10 @@ $aProductos[] = array("nombre" => "Impresora HP laser ",
                     </tr>
             
                       <?php
-                        $sumatoria = 0;
-                        for($i = 0; $i < count($aProductos); $i++){
+                        $sumatoria = 0;  //Lo coloco afuera del bucle porque sino lo pierdo
+                        for($i = 0; $i < count($aProductos); $i++){ //El count me devuelve la cantidad de elementos que tenga en mi array                  
+                            //Si pongo $sumatoria=0 aca, lo pierdo.
+                            
                             echo "<tr>";
                             echo "<td>" . $aProductos[$i]["nombre"] . "</td>";
                             echo "<td>" . $aProductos[$i]["marca"] . "</td>";

@@ -11,6 +11,7 @@ if ($stock > 0) {
 <br>
 
 <!---Otro ejercicio-->
+
 <?php 
 $valor=rand(100,300); 
 print_r($valor)
