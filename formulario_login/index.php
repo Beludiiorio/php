@@ -4,11 +4,10 @@ ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
 
-//si es postback
+//si es postback, es decir, si es una variable superglobal
 if ($_POST) {
     $usuario = $_POST["txtUsuario"];
     $clave = $_POST["txtClave"];
-
 
     //Si nombre es distinto de vacio y clave es distinto de vacio entonces:
     if ($usuario != "" &&  $clave != "") {
@@ -16,12 +15,12 @@ if ($_POST) {
         header("Location:acceso-confirmado.php");
         //sino 
     } else {
-        $mensaje = "Válido para usuarios registrados.";
+        $mensaje = "Válido para usuarios registrados."; //Si no completa nada aparece eso
     }
 }
 ?>
 
-<!DOCTYPE html>
+<!DOCTYPE html> <!--Abro html -->
 <html lang="es">
 
 <head>
