@@ -54,15 +54,16 @@ $aPacientes[3] = array(
         <div class="row">
             <div class="col-12">
                 <table class="table table-hover border">
+                <thead>    
                     <tr class="text-center">
                         <th> DNI</th>
                         <th>Nombre y apellido </th>
                         <th> Edad </th>
                         <th> Peso </th>
                     </tr>
-
+                </thead>
+                <tbody>
                     <?php foreach ($aPacientes as $paciente) { //Empieza el bucle 
-
 
                     ?>
                         <tr class="text-center">
@@ -74,7 +75,7 @@ $aPacientes[3] = array(
 
                     <?php } //Termina el bucle  
                     ?>
-
+                </tbody>
                 </table>
             </div>
         </div>
