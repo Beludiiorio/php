@@ -3,7 +3,7 @@ ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
-session_start(); //Indica que utilizaremos variables de session
+session_start(); //Indica que utilizaremos variables de session, es un array asociativo
 
 if (!isset($_SESSION["listadoClientes"])) {
     $_SESSION["listadoClientes"] = array();
@@ -33,14 +33,14 @@ if ($_POST) {
 
 
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es"> 
 
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Listado de clientes</title>
-    <!-- CSS only -->
+    <title> Listado de clientes</title>
+    <!-- CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 </head>
 
@@ -52,7 +52,7 @@ if ($_POST) {
             </div>
         </div>
         <div class="row">
-            <div class="col-3 offset-1 me-5">
+            <div class="col-3 offset-1 me-2">
                 <form action="" method="POST" class="form">
                     <label for="txtNombre"> Nombre:</label>
                     <input type="text" name="txtNombre" class="form-control my-2 " placeholder="Ingrese el nombre y apellido">
@@ -70,13 +70,15 @@ if ($_POST) {
                     <input type="submit" name="btnEliminar" class="btn bg-danger text-white" value="eliminar">
                 </form>
             </div>
-            <div class="col-6 ms-5">
-                <table class="table table-hover shadow border table-dark">
+            <div class="col-7 ms-2">
+                <table class="table table-hover shadow border "> <!--El shadow hace que se vea una sombra en la tabla -->
                     <thead>
+                        <tr class="text-center">
                         <th>Nombre:</th>
                         <th>DNI:</th>
                         <th>Telefono:</th>
                         <th>Edad:</th>
+                    </tr>
                     </thead>
                     <tbody>
                         <?php
