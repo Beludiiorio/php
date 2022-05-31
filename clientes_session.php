@@ -9,22 +9,22 @@ if (!isset($_SESSION["listadoClientes"])) {
     $_SESSION["listadoClientes"] = array();
 }
 
-if ($_POST) {
+if ($_POST) { //Si hay post, es decir que la persona completo el formulario,
     $nombre = $_REQUEST["txtNombre"];
     $dni = $_REQUEST["txtDni"];
     $telefono = $_REQUEST["txtTelefono"];
     $edad = $_REQUEST["txtEdad"];
 
-    if (isset($_POST["btnAgregar"])) {
+    if (isset($_POST["btnEnviar"])) { //Cuando la persona completa los datos y apreta en agregar
         
-        $_SESSION["listadoClientes"][] = array(
+        $_SESSION["listadoClientes"][] = array( //Array asociativo
             "nombre" => $nombre,
             "dni"  => $dni,
             "telefono"  => $telefono,
             "edad"  => $edad
         );
 
-    } else if (isset($_POST["btnEliminar"])) {
+    } else if (isset($_POST["btnEliminar"])) { //Cuando la persona apreta en eliminar se borra toda la lista
         session_destroy();
         $_SESSION["listadoClientes"] = array();
     }
@@ -53,21 +53,21 @@ if ($_POST) {
         </div>
         <div class="row">
             <div class="col-3 offset-1 me-2">
-                <form action="" method="POST" class="form">
+                <form action="" method="POST" class="form"> <!--El action lo va a procesar en este mismo archivo por lo tanto esta vacio -->
                     <label for="txtNombre"> Nombre:</label>
-                    <input type="text" name="txtNombre" class="form-control my-2 " placeholder="Ingrese el nombre y apellido">
+                    <input type="text" name="txtNombre" class="form-control my-2 " placeholder="Ingrese el nombre y apellido"> 
 
                     <label for="txtDni">DNI:</label>
-                    <input type="text" name="txtDni" class="form-control my-2" placeholder="11111111">
+                    <input type="text" name="txtDni" class="form-control my-2" placeholder="12345678"> <!--El placeholder es para una ver una referencia de lo que debo colocar en cada input -->
 
                     <label for="txtTelefono">Telefono:</label>
-                    <input type="tel" name="txtTelefono" class="form-control my-2" placeholder="1111111111">
+                    <input type="tel" name="txtTelefono" class="form-control my-2" placeholder="1234-4567">
 
                     <label for="txtEdad">Edad:</label>
-                    <input type="text" name="txtEdad" class="form-control my-2" placeholder="99">
+                    <input type="text" name="txtEdad" class="form-control my-2" placeholder="12">
 
-                    <input type="submit" name="btnAgregar" class="btn bg-primary text-white" value="Enviar">
-                    <input type="submit" name="btnEliminar" class="btn bg-danger text-white" value="eliminar">
+                    <button type="submit" name="btnEnviar" class="btn btn-primary  text-white">Enviar </button> <!--Al hacer click en los botones, voy a capturar la informacion con el php (arriba de todo) -->
+                    <button type="submit" name="btnEliminar" class="btn bg-danger text-white">Eliminar </button> <!--Le debo colocar el name ya que lo necesito para luego referirme a ese nombre cuando se aprete un boton o el otro -->
                 </form>
             </div>
             <div class="col-7 ms-2">
@@ -82,7 +82,7 @@ if ($_POST) {
                     </thead>
                     <tbody>
                         <?php
-                        foreach ($_SESSION["listadoClientes"] as $cliente) {
+                        foreach ($_SESSION["listadoClientes"] as $cliente) { //Utilizo un foreach para que recorra los elementos de mi array que esta almacenado en $SESSION["listadoClientes"], cada item va a ser un $cliente en singular 
                             echo "<tr>";
                             echo "<td>" . $cliente["nombre"] . "</td>";
                             echo "<td>" . $cliente["dni"] . "</td>";
