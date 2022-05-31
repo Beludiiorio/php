@@ -18,7 +18,7 @@
         <div class="row">
             <div class="offset-sm-3 col-sm-6 col-12"> <!-- sm es para tablet en adelante que ocupe 6 -->
                 <form action="resultado.php" method="POST">
-                    <!--Queremos que redireccione a resultado.php -->
+                    <!--Queremos que redireccione a resultado.php, lo va a procesar en resultado.php -->
                     <div class="pb-3">
                         <label for=""> Nombre: *</label>
                         <input type="text" name=txtNombre id=txtNombre class="form-control" required>
