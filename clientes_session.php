@@ -1,12 +1,12 @@
-<?php
-ini_set('display_errors', 1);
+<?php //Abro php
+ini_set('display_errors', 1); //3 lineas para que me muestren los posibles errores 
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
 session_start(); //Indica que utilizaremos variables de session, es un array asociativo
 
-if (!isset($_SESSION["listadoClientes"])) {
-    $_SESSION["listadoClientes"] = array();
+if (!isset($_SESSION["listadoClientes"])) { //if isset es para saber si una variable existe o no existe, yo le pongo !isset porque no existe entonces "no existe la variable listadoClientes? 
+    $_SESSION["listadoClientes"] = array(); //Bueno si no existe la voy a crear asi no me salta error en la primera vez ya que el foreach no puede cargar algo que no existe
 }
 
 if ($_POST) { //Si hay post, es decir que la persona completo el formulario,
@@ -15,18 +15,19 @@ if ($_POST) { //Si hay post, es decir que la persona completo el formulario,
     $telefono = $_REQUEST["txtTelefono"];
     $edad = $_REQUEST["txtEdad"];
 
-    if (isset($_POST["btnEnviar"])) { //Cuando la persona completa los datos y apreta en agregar
+    if (isset($_POST["btnEnviar"])) { //Esta seteado post btnEnviar? bueno si esta enviado hara lo siguiente 
         
-        $_SESSION["listadoClientes"][] = array( //Array asociativo
+        $_SESSION["listadoClientes"][] = array( //Cargara los datos
             "nombre" => $nombre,
             "dni"  => $dni,
             "telefono"  => $telefono,
             "edad"  => $edad
         );
 
-    } else if (isset($_POST["btnEliminar"])) { //Cuando la persona apreta en eliminar se borra toda la lista
-        session_destroy();
-        $_SESSION["listadoClientes"] = array();
+    } else if (isset($_POST["btnEliminar"])) { // Si esta seteado post btnEliminar hara lo siguiente
+        session_destroy(); //Elimina toda la variable session
+        
+         header("location: clientes_session.php"); //Cuando apreto el boton eliminar, que me redireccione 
     }
 }
 ?>
