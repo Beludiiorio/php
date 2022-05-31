@@ -61,3 +61,5 @@ if ($_POST) {
 </body>
 
 </html>
+
+<!--Ahora vamos a ver como podemos hacer para que almacene mas de una persona en el formulario entonces creamos otro archivo llamado clientes_session.php  -->
