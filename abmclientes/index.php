@@ -1,19 +1,19 @@
-<?php //Abro php
+<?php #Abro php
 
-ini_set('display_errors', 1); //Las 3 lineas que me permiten ver los posibles errores
+ini_set('display_errors', 1); #Las 3 lineas que me permiten ver los posibles errores
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
 
-if(file_exists("archivo.txt")){ //Si el archivo existe lo voy a abrir:
+if(file_exists("archivo.txt")){ #Si el archivo existe lo voy a abrir:
    
-    $strJson = file_get_contents("archivo.txt"); //Leer el archivo y almacenar el contenido json en una variable:
+    $strJson = file_get_contents("archivo.txt"); #Leer el archivo y almacenar el contenido json en una variable:
     
-    $aClientes = json_decode($strJson, true); //Convertir el json en un array aClientes (el true es para que lo convierta en un array y no en un objeto):
+    $aClientes = json_decode($strJson, true); #Convertir el json en un array aClientes (el true es para que lo convierta en un array y no en un objeto):
 
-} else { //Si no existe es porque no hay clientes:
+} else { #Si no existe es porque no hay clientes:
     
-    $aClientes = array(); //Array vacio de clientes $aClientes:
+    $aClientes = array(); #Array vacio de clientes $aClientes:
 }
 
 if (isset($_GET["id"])){
@@ -23,56 +23,54 @@ if (isset($_GET["id"])){
 }
 
 
-//Si es eliminar
-if(isset($_GET["do"]) && $_GET["do"] == "eliminar") { //El GET accede a toda la query string
+# Si es eliminar:
+if(isset($_GET["do"]) && $_GET["do"] == "eliminar") { #El GET accede a toda la query string
 
-    //Elimino la posición $aClientes[$id]
+    #Elimino la posición $aClientes[$id]:
     unset($aClientes[$id]);
 
-    //Convertir el array en json
+    #Convertir el array en json
     $strJson = json_encode ($aClientes);
 
-    //Actualizar archivo con el nuevo array de clientes
+    #Actualizar archivo con el nuevo array de clientes
     file_put_contents("archivo.txt", $strJson);
 
     header("Location: index.php");
 }
 
-if($_POST){ //La persona hace click en agregar, se genera el Postback, capturamos los datos:
-    $dni = trim($_POST["txtDni"]); //Lo almacenamos en varibles
+if($_POST){
+    $dni = trim($_POST["txtDni"]);
     $nombre = trim($_POST["txtNombre"]);
     $telefono = trim($_POST["txtTelefono"]);
     $correo = trim($_POST["txtCorreo"]);
-    $nombreImagen= "";
+    $nombreImagen="";
 
-    //Si viene una imagen adjunta la guardo
-
-    if($_FILES["archivo"]["error"] === UPLOAD_ERR_OK){
-       
-        $nombreAleatorio = date("Ymdhmsi"); 
-        $archivo_tmp = $_FILES["archivo"]["tmp_name"];
-        $nombreArchivo = $_FILES["archivo"]["name"];
-        $extension = pathinfo($nombreArchivo, PATHINFO_EXTENSION);
+    #Si viene una imagen adjunta la guardo:
+    if ($_FILES["archivo"]["error"] === UPLOAD_ERR_OK) {
+        $nombreAleatorio = date("Ymdhmsi") . rand(1000, 2000); 
+        $archivo_tmp = $_FILES["archivo"]["tmp_name"]; #C:\tmp\ghjuy6788765
+        $extension = pathinfo($_FILES["archivo"]["name"], PATHINFO_EXTENSION);
         if($extension == "jpg" || $extension == "png" || $extension == "jpeg"){
             $nombreImagen = "$nombreAleatorio.$extension";
             move_uploaded_file($archivo_tmp, "imagenes/$nombreImagen");
         }
     }
 
-        //Sino imagen es vacio
-
-        if($id >= 0){
-
-        if ($_FILES["archivo"]["error"] !== UPLOAD_ERR_OK) {
+    if($id >= 0){
+        # Si no se subio una imagen y estoy editando conservar en $nombreImagen el nombre
+        # De la imagen anterior que esta asociada al cliente que estamos editando:
+         if ($_FILES["archivo"]["error"] !== UPLOAD_ERR_OK) {
             $nombreImagen = $aClientes[$id]["imagen"];
-        } else {
-            // Si viene una imagen y hay un imagen anterior, eliminar la anterior:
+         } else {
+            
+            #Si viene una imagen Y hay una imagen anterior, eliminar la anterior
             if(file_exists("imagenes/". $aClientes[$id]["imagen"])){
                 unlink("imagenes/". $aClientes[$id]["imagen"]);
             }
          }
-        
-        //Actualizo
+
+        #Actualizo/ estoy editando:
+
         $aClientes[$id] = array("dni" => $dni,
                             "nombre" => $nombre,
                             "telefono" => $telefono,
@@ -81,7 +79,7 @@ if($_POST){ //La persona hace click en agregar, se genera el Postback, capturamo
                         );
     } else {
        
-        //Es nuevo
+        #Es nuevo cliente:
         $aClientes[] = array("dni" => $dni,
                         "nombre" => $nombre,
                         "telefono" => $telefono,
@@ -90,10 +88,10 @@ if($_POST){ //La persona hace click en agregar, se genera el Postback, capturamo
                     );
     }
 
-    //Convertir el array a json:
+    #Convertir el array a json:
     $strJson = json_encode($aClientes);
 
-    //Almacenar el json en archivo.txt:
+    #Almacenar el json en archivo.txt:
     file_put_contents("archivo.txt", $strJson);
 
 }
@@ -134,7 +132,7 @@ if($_POST){ //La persona hace click en agregar, se genera el Postback, capturamo
 
                     <div>
                         <label for=""> Teléfono:</label>
-                        <input type="text" name="txtTelefono" id="txtTelefono" class="form-control" value="<?php echo isset($aClientes[$id]["telefono"])? $aClientes[$id]["telefono"] : ""; ?>">
+                        <input type="text" name="txtTelefono" id="txtTelefono" class="form-control" required value="<?php echo isset($aClientes[$id]["telefono"])? $aClientes[$id]["telefono"] : ""; ?>">
                     </div>
                     <div>
                         <label for=""> Correo: *</label>
@@ -152,7 +150,7 @@ if($_POST){ //La persona hace click en agregar, se genera el Postback, capturamo
                 </form>
             </div>
             <div class="col-6">
-                <table class="table table-hover table-striped border">
+                <table class="table table-hover table-striped  border">
                   
                 <tr>
                         <th> Imagen </th>
@@ -169,7 +167,7 @@ if($_POST){ //La persona hace click en agregar, se genera el Postback, capturamo
                             <td><?php echo $cliente["correo"]; ?></td>
                             <td>
                                 <a href="?id=<?php echo $pos; ?>"><i class="fa-solid fa-square-pen"></i></a> <!--Boton de editar -->
-                                <a href="?id=<?php echo $pos; ?> &do=eliminar"><i class="fa-solid fa-trash"></i></a> <!--Boton de eliminar -->
+                                <a href="?id=<?php echo $pos; ?>&do=eliminar"><i class="fa-solid fa-trash"></i></a> <!--Boton de eliminar -->
                             </td>
                           
                         </tr>
