@@ -4,11 +4,11 @@ ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
 if (file_exists("archivo.txt")) {
-    //Si el archivo existe, cargo las tareas en la variable aTareas
+    #Si el archivo existe, cargo las tareas en la variable $aTareas:
     $strJson = file_get_contents("archivo.txt");
     $aTareas = json_decode($strJson, true);
 } else {
-    //Si el archivo no existe es porque no hay tareas
+    #Si el archivo no existe es porque no hay tareas:
     $aTareas = array();
 }
 
@@ -26,7 +26,7 @@ if ($_POST) {
     $descripcion = $_POST["txtDescripcion"];
 
     if ($id >= 0) {
-        //Estoy editando una tarea
+        #Estoy editando una tarea:
         $aTareas[$id] = array(
             "fecha" => $aTareas[$id]["fecha"],
             "prioridad" => $prioridad,
@@ -36,7 +36,7 @@ if ($_POST) {
             "descripcion" => $descripcion
         );
     } else {
-        //Estoy insertando una tarea
+        #Estoy insertando una tarea:
         $aTareas[] = array(
             "fecha" => date("d/m/Y"),
             "prioridad" => $prioridad,
@@ -47,19 +47,19 @@ if ($_POST) {
         );
     }
 
-    //Convertir el array de aTareas en json
+    #Convertir el array de aTareas en json:
     $strJson = json_encode($aTareas);
 
-    //Almacenar en un archivo.txt el json con file_put_contents
+    #Almacenar en un archivo.txt el json con file_put_contents:
     file_put_contents("archivo.txt", $strJson);
 }
 if (isset($_GET["do"]) && $_GET["do"] == "eliminar") {
     unset($aTareas[$id]);
 
-    //Convertir aTareas en json
+    #Convertir aTareas en json:
     $strJson = json_encode($aTareas);
 
-    //Almacenar el json en el archivo
+    #Almacenar el json en el archivo:
     file_put_contents("archivo.txt", $strJson);
 
     header("Location: index.php");
@@ -85,7 +85,7 @@ if (isset($_GET["do"]) && $_GET["do"] == "eliminar") {
 <body>
     <main class="container">
         <div class="row">
-            <div class="col-12 pb-3 pt-5 text-center">
+            <div class="col-12 pb-3 pt-3 text-center">
                 <h1> Gestor de tareas </h1>
             </div>
         </div>
@@ -97,25 +97,25 @@ if (isset($_GET["do"]) && $_GET["do"] == "eliminar") {
                             <label for="lstPrioridad">Prioridad</label>
                             <select name="lstPrioridad" id="lstPrioridad" class="form-control" required>
                                 <option value="" disabled selected>Seleccionar</option>
-                                <option value="Alta" <?php echo isset($aTareas[$id]) && $aTareas[$id]["prioridad"] == "Alta"? "selected": "";?> >Alta</option>
-                                <option value="Media"<?php echo isset($aTareas[$id]) && $aTareas[$id]["prioridad"]  == "Media"? "selected":"";?>>Media</option>
-                                <option value="Baja" <?php echo isset($aTareas[$id]) && $aTareas[$id]["prioridad"]  == "Baja"? "selected": "";?>>Baja</option>
+                                <option value="Alta" <?php echo isset($aTareas[$id]) && $aTareas[$id]["prioridad"] == "Alta" ? "selected" : ""; ?>>Alta</option>
+                                <option value="Media" <?php echo isset($aTareas[$id]) && $aTareas[$id]["prioridad"]  == "Media" ? "selected" : ""; ?>>Media</option>
+                                <option value="Baja" <?php echo isset($aTareas[$id]) && $aTareas[$id]["prioridad"]  == "Baja" ? "selected" : ""; ?>>Baja</option>
                             </select>
                         </div>
                         <div class="py-1 col-4">
                             <label for="lstUsuario">Usuario</label>
                             <select name="lstUsuario" id="lstUsuario" class="form-control" required>
                                 <option value="" disabled selected>Seleccionar</option>
-                                <option value="Ana" <?php echo isset($aTareas[$id]) && $aTareas[$id]["usuario"] == "Ana" ? "selected" : "";?>>Ana</option>
-                                <option value="Bernabe" <?php echo isset($aTareas[$id]) && $aTareas[$id]["usuario"] == "Bernabe" ? "selected" : "";?>>Bernabe</option>
-                                <option value="Daniela" <?php echo isset($aTareas[$id]) && $aTareas[$id]["usuario"] == "Daniela" ? "selected" : "";?>>Daniela</option>
+                                <option value="Ana" <?php echo isset($aTareas[$id]) && $aTareas[$id]["usuario"] == "Ana" ? "selected" : ""; ?>>Ana</option>
+                                <option value="Bernabe" <?php echo isset($aTareas[$id]) && $aTareas[$id]["usuario"] == "Bernabe" ? "selected" : ""; ?>>Bernabe</option>
+                                <option value="Daniela" <?php echo isset($aTareas[$id]) && $aTareas[$id]["usuario"] == "Daniela" ? "selected" : ""; ?>>Daniela</option>
                             </select>
                         </div>
                         <div class="py-1 col-4">
                             <label for="lstEstado">Estado</label>
                             <select name="lstEstado" id="lstEstado" class="form-control" required>
                                 <option value="" disabled selected>Seleccionar</option>
-                                <option value="Sin asignar" <?php echo isset($aTareas[$id]) && $aTareas[$id]["estado"] == "Sin asignar" ? "selected" : "";?> >Sin asignar</option>
+                                <option value="Sin asignar" <?php echo isset($aTareas[$id]) && $aTareas[$id]["estado"] == "Sin asignar" ? "selected" : ""; ?>>Sin asignar</option>
                                 <option value="Asignado" <?php echo isset($aTareas[$id]) && $aTareas[$id]["estado"] == "Asignado" ? "selected" : ""; ?>>Asignado</option>
                                 <option value="En proceso" <?php echo isset($aTareas[$id]) && $aTareas[$id]["estado"] == "En proceso" ? "selected" : ""; ?>>En proceso</option>
                                 <option value="Terminado" <?php echo isset($aTareas[$id]) && $aTareas[$id]["estado"] == "Terminado" ? "selected" : ""; ?>>Terminado</option>
@@ -125,19 +125,19 @@ if (isset($_GET["do"]) && $_GET["do"] == "eliminar") {
                     <div class="row">
                         <div class="col-12 py-1">
                             <label for="txtTitulo">Título</label>
-                            <input type="text" name="txtTitulo" id="txtTitulo" class="form-control" required value="<?php echo isset($aTareas[$id])? $aTareas[$id]["titulo"] :""; ?>">
+                            <input type="text" name="txtTitulo" id="txtTitulo" class="form-control" required value="<?php echo isset($aTareas[$id]) ? $aTareas[$id]["titulo"] : ""; ?>">
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-12 py-1">
                             <label for="txtDescripcion">Descripción</label>
-                            <textarea name="txtDescripcion" id="txtDescripcion" required class="form-control"><?php echo isset($aTareas[$id])? $aTareas[$id]["descripcion"] : ""; ?></textarea>
+                            <textarea name="txtDescripcion" id="txtDescripcion" required class="form-control"><?php echo isset($aTareas[$id]) ? $aTareas[$id]["descripcion"] : ""; ?></textarea>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-12 py-1 text-center">
                             <button type="submit" id="btnEnviar" name="btnEnviar" class="btn btn-primary">ENVIAR</button>
-                             <a href="index.php" class="btn btn-warning">CANCELAR</a>
+                            <a href="index.php" class="btn btn-danger">NUEVO</a>
                         </div>
                     </div>
                 </form>
@@ -166,8 +166,8 @@ if (isset($_GET["do"]) && $_GET["do"] == "eliminar") {
                                 <td><?php echo $tarea["usuario"]; ?></td>
                                 <td><?php echo $tarea["estado"]; ?></td>
                                 <td>
-                                    <a href="?id=<?php echo $pos ?>" class="btn btn-secondary"><i class="fa-solid fa-pencil"></i></a>
-                                    <a href="?id=<?php echo $pos ?>&do=eliminar" class="btn btn-danger"><i class="fa-solid fa-trash-can"></i></a>
+                                <a href="?id=<?php echo $pos ?>" class="btn btn-success"> <i class="fa-solid fa-pen-to-square"></i></a>
+                                        <a href="?id=<?php echo $pos ?>&do=eliminar" class="btn btn-danger"><i class="fa-solid fa-trash"></i></a>
                                 </td>
                             </tr>
                         <?php endforeach; ?>
@@ -178,7 +178,7 @@ if (isset($_GET["do"]) && $_GET["do"] == "eliminar") {
         <?php else : ?>
             <div class="row">
                 <div class="col-12">
-                    <div class="alert alert-info" role="alert">
+                    <div class="alert alert-success" role="alert">
                         Aún no se han cargado tareas.
                     </div>
                 </div>
