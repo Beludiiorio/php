@@ -117,24 +117,24 @@ class Clase
     }
     public function imprimirListado()
     {
-        echo "<table  class='table table-hover table-bordered border-dark shadow';
+        echo "<table  class='text-center table table-hover table-bordered border-dark shadow';
                 <tr>
-                    <th colspan=2 class='table-primary'>Clase</th>
+                    <th colspan=2 class='text-center table-primary'>Clase</th>
                     <td colspan=2>" . $this->nombre . "</td>
                     
                 </tr>
                 <tr>
-                    <th colspan=2  class='table-danger'> ENTRENADOR</th>
+                    <th colspan=2  class='text-center table-danger'> ENTRENADOR</th>
                     <td colspan=2>" . $this->entrenador->nombre . "</td>
                 </tr>
                 <tr>
                     <th colspan=4 class='text-center table-secondary' >ALUMNOS </th>
                 </tr>
                 <tr>
-                    <td  class='table-dark'>Nombre</td>
-                    <td  class='table-dark'>DNI</td>
-                    <td  class='table-dark'>Celular</td>
-                    <td  class='table-dark'>Apto Fisico</td>
+                    <td  class='text-center table-dark'>Nombre</td>
+                    <td  class='text-center table-dark'>DNI</td>
+                    <td  class='text-center table-dark'>Celular</td>
+                    <td  class='text-center table-dark'>Apto Fisico</td>
                 </tr>";
                     foreach ($this->aAlumnos as $alumno):
                         echo "<tr>
@@ -145,7 +145,8 @@ class Clase
                              </tr>";
                     endforeach;
             "</table>";
-            /*  **==>preguntar para que aparezca true o false****<==  */
+
+            // preguntar para que aparezca true o false 
     }
 }
 
