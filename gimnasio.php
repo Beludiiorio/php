@@ -1,7 +1,5 @@
 <?php
 
-
-
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
@@ -153,38 +151,51 @@ class Clase
 
 
 //Programa
-$entrenador1 = new Entrenador("17180169", "Marcos Allende", "marcoa@gmail.com", "1178682468");
-$entrenador2 = new Entrenador("30985469", "Juan Perez", "juanPerez@mail.com", "1175998213");
+$entrenador1 = new Entrenador("17180169", "Octavio Allende", "Octaa@gmail.com", "1178682468");
+$entrenador2 = new Entrenador("30985469", "Brian Villarreal", "brianvillarreal@mail.com", "1175998213");
 
 $alumno1 = new Alumno("41704438", "Belen Di iorio", "beludiiorio@mail.com", "1150207014", "06-04-1997");
 $alumno1->setFichaMedica(90, 1.71, true);
 $alumno1->presentismo = 90;
 
-$alumno2 = new Alumno("38746323", "Lucia Foco", "luciafoco@gmail.com", "1175822664", "07-08-1998");
-$alumno2->setFichaMedica(70, 1.69, false);
+$alumno2 = new Alumno("40746323", "Lucia Foco", "luciafoco@gmail.com", "1175822664", "07-08-1998");
+$alumno2->setFichaMedica(70, 1.69, true);
 $alumno2->presentismo = 98;
 
-$alumno3 = new Alumno("35789458", "Natalia Anton", "natianton05@gmail.com", "1149875261", "13-10-1997");
-$alumno3->setFichaMedica(94, 1.66, true);
-$alumno3->presentismo = 68;
+$alumno3 = new Alumno("40676876", "Natalia Anton", "natianton05@gmail.com", "1149875261", "13-10-1997");
+$alumno3->setFichaMedica(94, 1.70, true);
+$alumno3->presentismo = 90;
 
-$alumno4 = new Alumno("32349781", "Claudia Dumycz", "clau_49@mail.com", "1147958612", "01-08-1989");
+$alumno4 = new Alumno("18349781", "Claudia Dumycz", "clau_49@gmail.com", "1147958612", "01-08-1989");
 $alumno4->setFichaMedica(70, 1.80, true);
 $alumno4->presentismo = 97;
+
+$alumno5 = new Alumno("18755934", "Karina Dumycz", "Kdumyzs@gmail.com", "1178654927", "22-02-1964");
+$alumno5->setFichaMedica(60, 1.68, true);
+$alumno5->presentismo = 100;
+
+$alumno6 = new Alumno("40751234", "Micaela Pesado", "Mica_97@gmail.com", "1176849237", "30-04-1997");
+$alumno6->setFichaMedica(60, 1.67, true);
+$alumno6->presentismo = 80;
+
+$alumno7 = new Alumno("40676875", "Florencia Anton", "floranton05@gmail.com", "1178649531", "13-10-1997");
+$alumno7->setFichaMedica(90, 1.65, true);
+$alumno7->presentismo = 90;
 
 $clase1 = new Clase();
 $clase1->nombre = "Funcional";
 $clase1->asignarEntrenador($entrenador1);
-$clase1->inscribirAlumno($alumno1);
-$clase1->inscribirAlumno($alumno2);
 $clase1->inscribirAlumno($alumno3);
+$clase1->inscribirAlumno($alumno4);
+$clase1->inscribirAlumno($alumno1);
+$clase1->inscribirAlumno($alumno7);
 //$clase1->imprimirListado();
 
 $clase2 = new Clase();
 $clase2->nombre = "Zumba";
 $clase2->asignarEntrenador($entrenador2);
-$clase2->inscribirAlumno($alumno1);
-$clase2->inscribirAlumno($alumno4);
+$clase2->inscribirAlumno($alumno5);
+$clase2->inscribirAlumno($alumno6);
 $clase2->inscribirAlumno($alumno2);
 //$clase2->imprimirListado();
 
