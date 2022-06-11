@@ -123,41 +123,41 @@ if($_POST){
                 <form action="" method="POST" enctype="multipart/form-data"> <!--Enctype es el atributo para adjuntar archivos -->
                     <div>
                         <label for=""> DNI:* </label>
-                        <input type="text" name="txtDni" id="txtDni" class="form-control" required value="<?php echo isset($aClientes[$id]["dni"])? $aClientes[$id]["dni"] : ""; ?>">
+                        <input type="text" name="txtDni" id="txtDni" class="form-control pb-2 border border-dark" required value="<?php echo isset($aClientes[$id]["dni"])? $aClientes[$id]["dni"] : ""; ?>">
                     </div>
                     <div>
                         <label for=""> Nombre: *</label>
-                        <input type="text" name="txtNombre" id="txtNombre" class="form-control" required value="<?php echo isset($aClientes[$id]["nombre"])? $aClientes[$id]["nombre"] : ""; ?>">
+                        <input type="text" name="txtNombre" id="txtNombre" class="form-control pb-2 border border-dark" required value="<?php echo isset($aClientes[$id]["nombre"])? $aClientes[$id]["nombre"] : ""; ?>">
                     </div>
 
                     <div>
                         <label for=""> Teléfono:</label>
-                        <input type="text" name="txtTelefono" id="txtTelefono" class="form-control" required value="<?php echo isset($aClientes[$id]["telefono"])? $aClientes[$id]["telefono"] : ""; ?>">
+                        <input type="text" name="txtTelefono" id="txtTelefono" class="form-control pb-2 border border-dark" required value="<?php echo isset($aClientes[$id]["telefono"])? $aClientes[$id]["telefono"] : ""; ?>">
                     </div>
                     <div>
                         <label for=""> Correo: *</label>
-                        <input type="email" name="txtCorreo" id="txtCorreo" class="form-control" required value="<?php echo isset($aClientes[$id]["correo"])? $aClientes[$id]["correo"] : ""; ?>">
+                        <input type="email" name="txtCorreo" id="txtCorreo" class="form-control pb-2 border border-dark" required value="<?php echo isset($aClientes[$id]["correo"])? $aClientes[$id]["correo"] : ""; ?>">
                     </div>
                     <div>
-                        <label for="" class="p-3"> Archivo adjunto</label>
+                        <label for="" class="p-3"> Archivo adjunto </label>
                         <input type="file" name="archivo" id="archivo" accept=".jpg, .jpeg, .png"> <!--Accept se refiere al formato que podemos utlizar en este caso -->
                         <small class="d-block"> Archivos admitidos: .jpg, .jpeg, .png </small> <!--Small convierte mi texto en un tamaño más pequeño -->
                     </div>
                     <div>
-                        <button type="submit" class="btn btn-primary"> Guardar </button>
-                        <a href="index.php" class="btn btn-danger my-2"> NUEVO </a>
+                        <button type="submit" class="btn btn-success border border-dark Bolder weight text"> GUARDAR </button>
+                        <a href="index.php" class="btn btn-warning my-2 border border-dark Bolder weight text "> NUEVO </a>
                     </div>
                 </form>
             </div>
             <div class="col-6">
                 <table class="table table-hover  table-striped shadow border">
                   
-                <tr class="text-center">
-                        <th> Imagen </th>
-                        <th> DNI </th>
-                        <th> Nombre </th>
-                        <th> Correo </th>
-                        <th> Acciones </th>
+                <tr class="text-center fs-5 table-secondary">
+                        <th>Imagen</th>
+                        <th>DNI</th>
+                        <th>Nombre</th>
+                        <th>Correo</th>
+                        <th>Acciones</th>
                     </tr>
                     <?php foreach ($aClientes as $pos => $cliente): ?> <!--Usamos el foreach para recorrer los clientes -->
                         <tr class="text-center">
@@ -166,13 +166,13 @@ if($_POST){
                             <td><?php echo $cliente["nombre"]; ?></td>
                             <td><?php echo $cliente["correo"]; ?></td>
                             <td>
-                                <a href="?id=<?php echo $pos; ?>"><i class="fa-solid fa-square-pen"></i></a> <!--Boton de editar -->
-                                <a href="?id=<?php echo $pos; ?>&do=eliminar"><i class="fa-solid fa-trash"></i></a> <!--Boton de eliminar -->
+                                <a href="?id=<?php echo $pos; ?>"><i class="fa-solid fa-square-pen" style="color:green"></i></a> <!--Boton de editar -->
+                                <a href="?id=<?php echo $pos; ?>&do=eliminar"><i class="fa-solid fa-trash-can" style="color:red"></i></a> <!--Boton de eliminar -->
                             </td>
                           
                         </tr>
                     <?php endforeach; ?>
-                </table>
+                </table> 
             </div>
         </div>
     </main>
