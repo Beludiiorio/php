@@ -139,7 +139,7 @@ if($_POST){
                         <input type="email" name="txtCorreo" id="txtCorreo" class="form-control" required value="<?php echo isset($aClientes[$id]["correo"])? $aClientes[$id]["correo"] : ""; ?>">
                     </div>
                     <div>
-                        <label for=""> Archivo adjunto</label>
+                        <label for="" class="p-3"> Archivo adjunto</label>
                         <input type="file" name="archivo" id="archivo" accept=".jpg, .jpeg, .png"> <!--Accept se refiere al formato que podemos utlizar en este caso -->
                         <small class="d-block"> Archivos admitidos: .jpg, .jpeg, .png </small> <!--Small convierte mi texto en un tamaño más pequeño -->
                     </div>
@@ -150,9 +150,9 @@ if($_POST){
                 </form>
             </div>
             <div class="col-6">
-                <table class="table table-hover table-striped  border">
+                <table class="table table-hover  table-striped shadow border">
                   
-                <tr>
+                <tr class="text-center">
                         <th> Imagen </th>
                         <th> DNI </th>
                         <th> Nombre </th>
@@ -160,7 +160,7 @@ if($_POST){
                         <th> Acciones </th>
                     </tr>
                     <?php foreach ($aClientes as $pos => $cliente): ?> <!--Usamos el foreach para recorrer los clientes -->
-                        <tr>
+                        <tr class="text-center">
                             <td><img src="imagenes/<?php echo $cliente["imagen"]; ?>" class="img-thumbnail"></td>
                             <td><?php echo $cliente["dni"]; ?></td>
                             <td><?php echo $cliente["nombre"]; ?></td>
