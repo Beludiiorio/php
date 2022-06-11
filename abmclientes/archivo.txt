@@ -1,1 +1,1 @@
-{"0":{"dni":"41704438","nombre":"Belen","telefono":"1150207014","correo":"beludiiorio@gmail.com","imagen":"20220611020610491353.jpeg"},"13":{"dni":"41704438","nombre":"Belen","telefono":"1150207014","correo":"beludiiorio@gmail.com","imagen":"20220611020625491033.jpeg"}}
+[{"dni":"41704438","nombre":"Belen","telefono":"1150207014","correo":"beludiiorio@gmail.com","imagen":"20220611020610491353.jpeg"}]

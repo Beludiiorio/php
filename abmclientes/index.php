@@ -144,15 +144,15 @@ if($_POST){
                         <small class="d-block"> Archivos admitidos: .jpg, .jpeg, .png </small> <!--Small convierte mi texto en un tamaño más pequeño -->
                     </div>
                     <div>
-                        <button type="submit" class="btn btn-success border border-dark Bolder weight text"> GUARDAR </button>
-                        <a href="index.php" class="btn btn-warning my-2 border border-dark Bolder weight text "> NUEVO </a>
+                        <button type="submit" class="btn btn-success border border-dark"> GUARDAR </button>
+                        <a href="index.php" class="btn btn-warning my-2 border border-dark"> NUEVO </a> <!-- Le coloco un borde negro -->
                     </div>
                 </form>
             </div>
             <div class="col-6">
-                <table class="table table-hover  table-striped shadow border">
+                <table class="table table-hover table-striped shadow border">
                   
-                <tr class="text-center fs-5 table-secondary">
+                <tr class="text-center fs-5 table-secondary"> <!--fs-5 es para modificar el tamaño del texto -->
                         <th>Imagen</th>
                         <th>DNI</th>
                         <th>Nombre</th>
@@ -166,8 +166,8 @@ if($_POST){
                             <td><?php echo $cliente["nombre"]; ?></td>
                             <td><?php echo $cliente["correo"]; ?></td>
                             <td>
-                                <a href="?id=<?php echo $pos; ?>"><i class="fa-solid fa-square-pen" style="color:green"></i></a> <!--Boton de editar -->
-                                <a href="?id=<?php echo $pos; ?>&do=eliminar"><i class="fa-solid fa-trash-can" style="color:red"></i></a> <!--Boton de eliminar -->
+                                <a href="?id=<?php echo $pos; ?>"><i class="fa-solid fa-square-pen fa-lg" style="color:green"></i></a> <!--Boton de editar/ fa-ig es para el tamaño de los iconos -->
+                                <a href="?id=<?php echo $pos; ?>&do=eliminar"><i class="fa-solid fa-trash-can fa-lg" style="color:red"></i></a> <!--Boton de eliminar -->
                             </td>
                           
                         </tr>
