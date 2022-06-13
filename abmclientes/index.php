@@ -1,6 +1,6 @@
 <?php #Abro php
 
-ini_set('display_errors', 1); #Las 3 lineas que me permiten ver los posibles errores
+ini_set('display_errors', 1); #Las 3 lineas que me permiten ver los posibles errores:
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
@@ -23,19 +23,19 @@ if (isset($_GET["id"])){
 }
 
 
-# Si es eliminar:
+#Si es eliminar:
 if(isset($_GET["do"]) && $_GET["do"] == "eliminar") { #El GET accede a toda la query string
 
     #Elimino la posición $aClientes[$id]:
     unset($aClientes[$id]);
 
-    #Convertir el array en json
+    #Convertir el array en json:
     $strJson = json_encode ($aClientes);
 
-    #Actualizar archivo con el nuevo array de clientes
+    #Actualizar archivo con el nuevo array de clientes:
     file_put_contents("archivo.txt", $strJson);
 
-    header("Location: index.php");
+    header("Location: index.php"); #Redireccionamiento a index.php
 }
 
 if($_POST){
@@ -48,7 +48,7 @@ if($_POST){
     #Si viene una imagen adjunta la guardo:
     if ($_FILES["archivo"]["error"] === UPLOAD_ERR_OK) {
         $nombreAleatorio = date("Ymdhmsi") . rand(1000, 2000); 
-        $archivo_tmp = $_FILES["archivo"]["tmp_name"]; #C:\tmp\ghjuy6788765
+        $archivo_tmp = $_FILES["archivo"]["tmp_name"]; 
         $extension = pathinfo($_FILES["archivo"]["name"], PATHINFO_EXTENSION);
         if($extension == "jpg" || $extension == "png" || $extension == "jpeg"){
             $nombreImagen = "$nombreAleatorio.$extension";
@@ -59,11 +59,13 @@ if($_POST){
     if($id >= 0){
         # Si no se subio una imagen y estoy editando conservar en $nombreImagen el nombre
         # De la imagen anterior que esta asociada al cliente que estamos editando:
+
          if ($_FILES["archivo"]["error"] !== UPLOAD_ERR_OK) {
             $nombreImagen = $aClientes[$id]["imagen"];
          } else {
             
             #Si viene una imagen Y hay una imagen anterior, eliminar la anterior
+
             if(file_exists("imagenes/". $aClientes[$id]["imagen"])){
                 unlink("imagenes/". $aClientes[$id]["imagen"]);
             }
@@ -96,21 +98,20 @@ if($_POST){
 
 }
 
-
 ?>
 
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> ABM Clientes </title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+<!DOCTYPE html> <!-- Abro html-->
+<html lang="es"> <!--Idioma Español-->
+<head> <!-- Es la configuracion que le indicamos al ordenador -->
+    <meta charset="UTF-8">    <!--Para que acepte los caracteres del español -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"> <!-- Para que sea compatible con microsoft edge-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">   <!-- Para que las paginas sean responsivas -->
+    <title> ABM Clientes </title>  <!--Titulo de la pestaña -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous"> <!--Incluimos Bootstrap-->
     <link rel="stylesheet" href="css/fontawesome6.1.1/css/all.min.css">
-    <link rel="stylesheet" href="css/fontawesome6.1.1/css/fontawesome.min.css">
+    <link rel="stylesheet" href="css/fontawesome6.1.1/css/fontawesome.min.css"> <!--Incluimos fontawesome-->
 </head>
-<body>
+<body> <!--Cuerpo -->
     <main class="container">
         <div class="row">
             <div class="col-12 py-4 text-center">
