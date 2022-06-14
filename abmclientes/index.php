@@ -124,20 +124,20 @@ if($_POST){
                 <form action="" method="POST" enctype="multipart/form-data"> <!--Enctype es el atributo para adjuntar archivos -->
                     <div>
                         <label for=""> DNI:* </label>
-                        <input type="text" name="txtDni" id="txtDni" class="form-control pb-2 border border-dark" required value="<?php echo isset($aClientes[$id]["dni"])? $aClientes[$id]["dni"] : ""; ?>">
+                        <input type="text" name="txtDni" id="txtDni" class="form-control pb-2 border border-dark" placeholder="12.345.789" required value="<?php echo isset($aClientes[$id]["dni"])? $aClientes[$id]["dni"] : ""; ?>">
                     </div>
                     <div>
                         <label for=""> Nombre: *</label>
-                        <input type="text" name="txtNombre" id="txtNombre" class="form-control pb-2 border border-dark" required value="<?php echo isset($aClientes[$id]["nombre"])? $aClientes[$id]["nombre"] : ""; ?>">
+                        <input type="text" name="txtNombre" id="txtNombre" class="form-control pb-2 border border-dark" placeholder=" Juana Rodriguez" required value="<?php echo isset($aClientes[$id]["nombre"])? $aClientes[$id]["nombre"] : ""; ?>">
                     </div>
 
                     <div>
                         <label for=""> Teléfono:</label>
-                        <input type="text" name="txtTelefono" id="txtTelefono" class="form-control pb-2 border border-dark" required value="<?php echo isset($aClientes[$id]["telefono"])? $aClientes[$id]["telefono"] : ""; ?>">
+                        <input type="text" name="txtTelefono" id="txtTelefono" class="form-control pb-2 border border-dark" placeholder="4801-7896" required value="<?php echo isset($aClientes[$id]["telefono"])? $aClientes[$id]["telefono"] : ""; ?>">
                     </div>
                     <div>
                         <label for=""> Correo: *</label>
-                        <input type="email" name="txtCorreo" id="txtCorreo" class="form-control pb-2 border border-dark" required value="<?php echo isset($aClientes[$id]["correo"])? $aClientes[$id]["correo"] : ""; ?>">
+                        <input type="email" name="txtCorreo" id="txtCorreo" class="form-control pb-2 border border-dark" placeholder="ejemplo@gmail.com" required value="<?php echo isset($aClientes[$id]["correo"])? $aClientes[$id]["correo"] : ""; ?>">
                     </div>
                     <div>
                         <label for="" class="p-3"> Archivo adjunto </label>
