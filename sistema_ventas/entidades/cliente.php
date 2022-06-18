@@ -1,8 +1,8 @@
 <?php
 
-class Cliente
+class Cliente //Es POO por eso la clase comienza en mayuscula y las entidades en singular
 {
-    private $idcliente;
+    private $idcliente; //Se corresponden a las columnas de la base de datos
     private $nombre;
     private $cuit;
     private $telefono;
@@ -12,7 +12,7 @@ class Cliente
     private $fk_idlocalidad;
     private $domicilio;
 
-    public function __construct()
+    public function __construct() //constructor por defecto
     {
 
     }
@@ -47,8 +47,8 @@ class Cliente
     {
         //Instancia la clase mysqli con el constructor parametrizado
         $mysqli = new mysqli(Config::BBDD_HOST, Config::BBDD_USUARIO, Config::BBDD_CLAVE, Config::BBDD_NOMBRE, Config::BBDD_PORT);
-        //Arma la query
-        $sql = "INSERT INTO clientes (
+        //Arma la query, es un string:
+        $sql = "INSERT INTO clientes ( #El metodo insert tiene 4 partes, se conecta a la BBDD, utiliza el programa mySQLI, crea el objeto mySQLI.
                     nombre,
                     cuit,
                     telefono,
@@ -158,7 +158,7 @@ class Cliente
                     correo,
                     fecha_nac,
                     fk_idprovincia,
-                    fk_idlocalidad,
+                    fk_idnacionalidad,
                     domicilio
                 FROM clientes";
         if (!$resultado = $mysqli->query($sql)) {
@@ -182,7 +182,7 @@ class Cliente
                     $entidadAux->fecha_nac = "";
                 }
                 $entidadAux->fk_idprovincia = $fila["fk_idprovincia"];
-                $entidadAux->fk_idlocalidad = $fila["fk_idlocalidad"];
+                $entidadAux->fk_idlocalidad = $fila["fk_idnacionalidad"];
                 $entidadAux->domicilio = $fila["domicilio"];
                 $aResultado[] = $entidadAux;
             }
