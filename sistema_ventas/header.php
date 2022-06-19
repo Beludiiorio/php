@@ -1,17 +1,25 @@
 <?php
+include_once("config.php");
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
- if (session_status() === PHP_SESSION_NONE) session_start();
 
-if($_POST){
-  if(isset($_POST["btnCerrar"])){ /* Analizamos si es la accion del boton cerrar */
-      session_destroy();
-      header("location:login.php");
-  }
+include_once("config.php");
+
+if(!isset($_SESSION["nombre"])){
+    header("Location: login.php");
 }
 
+if($_POST){
+    if(isset($_POST["btnCerrar"])){ /* Analizamos si es la accion del boton cerrar */
+        session_destroy();
+        header("location:login.php");
+    }
+}
+
+
 ?>
+
 <!DOCTYPE html>
 <html lang="es">
 

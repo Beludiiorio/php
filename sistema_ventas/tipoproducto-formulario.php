@@ -25,10 +25,9 @@ if ($_POST) {
         header("Location: tipoproducto-listado.php");
     }
 }
-else if (isset($_REQUEST["id"])){
- $tipoProducto->obtenerPorId();   
+if (isset($_GET["id"]) && isset($_GET["id"]) > 0) {
+    $tipoProducto->obtenerPorId();
 }
-
 
 include_once("header.php");
 ?>
@@ -58,7 +57,7 @@ include_once("header.php");
     <div class="row">
         <div class="col-6 form-group">
             <label for="txtNombre">Nombre:</label>
-            <input type="text" required class="form-control" name="txtNombre" id="txtNombre" value="<?php echo $tipoProducto-> nombre; ?> ">
+            <input type="text" required class="form-control" name="txtNombre" id="txtNombre" value="<?php echo $tipoProducto->nombre; ?> ">
         </div>
 
     </div>
