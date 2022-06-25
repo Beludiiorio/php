@@ -226,5 +226,4 @@ class Venta { //Es POO por eso la clase comienza en mayuscula y las entidades en
 
 }
 
-
 ?>
