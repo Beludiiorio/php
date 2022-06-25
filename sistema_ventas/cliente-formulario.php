@@ -130,6 +130,7 @@ include_once("header.php");
                             <label for="txtTelefono">Provincia:</label>
                             <select class="form-control" name="lstProvincia" id="lstProvincia" onchange="fBuscarLocalidad()" required>
                                 <option value="" disabled selected>Seleccionar</option>
+                                <option value="1">CABA</option>
                                 <?php foreach($aProvincias as $provincia): ?>
                                     <?php if($cliente->fk_idprovincia == $provincia->idprovincia): ?>
                                         <option selected value="<?php echo $provincia->idprovincia; ?>"><?php echo $provincia->nombre; ?></option>

@@ -158,7 +158,7 @@ class Cliente //Es POO por eso la clase comienza en mayuscula y las entidades en
                     correo,
                     fecha_nac,
                     fk_idprovincia,
-                    fk_idnacionalidad,
+                    fk_idlocalidad,
                     domicilio
                 FROM clientes";
         if (!$resultado = $mysqli->query($sql)) {
@@ -182,7 +182,7 @@ class Cliente //Es POO por eso la clase comienza en mayuscula y las entidades en
                     $entidadAux->fecha_nac = "";
                 }
                 $entidadAux->fk_idprovincia = $fila["fk_idprovincia"];
-                $entidadAux->fk_idlocalidad = $fila["fk_idnacionalidad"];
+                $entidadAux->fk_idlocalidad = $fila["fk_idlocalidad"];
                 $entidadAux->domicilio = $fila["domicilio"];
                 $aResultado[] = $entidadAux;
             }

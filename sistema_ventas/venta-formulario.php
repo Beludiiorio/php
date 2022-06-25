@@ -207,7 +207,7 @@ function fCalcularTotal(){
             $("#txtTotal").val(strResultado);
         }
     });   
-} 
+}
 
 
 </script>
