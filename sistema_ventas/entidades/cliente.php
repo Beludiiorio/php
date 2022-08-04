@@ -1,8 +1,7 @@
 <?php
-
-class Cliente //Es POO por eso la clase comienza en mayuscula y las entidades en singular
+class Cliente
 {
-    private $idcliente; //Se corresponden a las columnas de la base de datos
+    private $idcliente;
     private $nombre;
     private $cuit;
     private $telefono;
@@ -12,7 +11,7 @@ class Cliente //Es POO por eso la clase comienza en mayuscula y las entidades en
     private $fk_idlocalidad;
     private $domicilio;
 
-    public function __construct() //constructor por defecto
+    public function __construct()
     {
 
     }
@@ -28,7 +27,7 @@ class Cliente //Es POO por eso la clase comienza en mayuscula y las entidades en
         return $this;
     }
 
-    public function cargarFormulario($request)
+    public function cargarFormulario($request) //La informacion
     {
         $this->idcliente = isset($request["id"]) ? $request["id"] : "";
         $this->nombre = isset($request["txtNombre"]) ? $request["txtNombre"] : "";
@@ -43,12 +42,12 @@ class Cliente //Es POO por eso la clase comienza en mayuscula y las entidades en
         }
     }
 
-    public function insertar()
+    public function insertar() 
     {
         //Instancia la clase mysqli con el constructor parametrizado
-        $mysqli = new mysqli(Config::BBDD_HOST, Config::BBDD_USUARIO, Config::BBDD_CLAVE, Config::BBDD_NOMBRE, Config::BBDD_PORT);
-        //Arma la query, es un string:
-        $sql = "INSERT INTO clientes ( #El metodo insert tiene 4 partes, se conecta a la BBDD, utiliza el programa mySQLI, crea el objeto mySQLI.
+        $mysqli = new mysqli(Config::BBDD_HOST, Config::BBDD_USUARIO, Config::BBDD_CLAVE, Config::BBDD_NOMBRE, Config::BBDD_PORT); //Conectarse a la base de datos
+        //Arma la query
+        $sql = "INSERT INTO clientes (
                     nombre,
                     cuit,
                     telefono,
@@ -67,23 +66,25 @@ class Cliente //Es POO por eso la clase comienza en mayuscula y las entidades en
                     $this->fk_idlocalidad,
                     '$this->domicilio'
                 );";
-
+                //  Se usa '´ solo para las string ej: '$this->nombre',
+                
         // print_r($sql);exit;
         //Ejecuta la query
+        
         if (!$mysqli->query($sql)) {
             printf("Error en query: %s\n", $mysqli->error . " " . $sql);
         }
-        //Obtiene el id generado por la inserción
+        #Obtiene el id generado por la inserción
         $this->idcliente = $mysqli->insert_id;
-        //Cierra la conexión
+        #Cierra la conexión
         $mysqli->close();
     }
 
     public function actualizar()
     {
 
-        $mysqli = new mysqli(Config::BBDD_HOST, Config::BBDD_USUARIO, Config::BBDD_CLAVE, Config::BBDD_NOMBRE, Config::BBDD_PORT); // Nos conectamos a la base de datos
-        $sql = "UPDATE clientes SET #Armamos la query
+        $mysqli = new mysqli(Config::BBDD_HOST, Config::BBDD_USUARIO, Config::BBDD_CLAVE, Config::BBDD_NOMBRE, Config::BBDD_PORT);
+        $sql = "UPDATE clientes SET 
                 nombre = '$this->nombre',
                 cuit = '$this->cuit',
                 telefono = '$this->telefono',
@@ -94,16 +95,16 @@ class Cliente //Es POO por eso la clase comienza en mayuscula y las entidades en
                 domicilio =  '$this->domicilio'
                 WHERE idcliente = $this->idcliente";
 
-        if (!$mysqli->query($sql)) { #Ejecutamos la query
+        if (!$mysqli->query($sql)) {
             printf("Error en query: %s\n", $mysqli->error . " " . $sql);
         }
-        $mysqli->close(); #Cerramos
+        $mysqli->close();
     }
 
     public function eliminar()
     {
-        $mysqli = new mysqli(Config::BBDD_HOST, Config::BBDD_USUARIO, Config::BBDD_CLAVE, Config::BBDD_NOMBRE, Config::BBDD_PORT); //Creamos el objeto, constructor parametrizado
-        $sql = "DELETE FROM clientes WHERE idcliente = " . $this->idcliente; //Armamos la query
+        $mysqli = new mysqli(Config::BBDD_HOST, Config::BBDD_USUARIO, Config::BBDD_CLAVE, Config::BBDD_NOMBRE, Config::BBDD_PORT);
+        $sql = "DELETE FROM clientes WHERE idcliente = ". $this->idcliente;
         //Ejecuta la query
         if (!$mysqli->query($sql)) {
             printf("Error en query: %s\n", $mysqli->error . " " . $sql);
@@ -111,7 +112,7 @@ class Cliente //Es POO por eso la clase comienza en mayuscula y las entidades en
         $mysqli->close();
     }
 
-    public function obtenerPorId()
+    public function obtenerPorId() 
     {
         $mysqli = new mysqli(Config::BBDD_HOST, Config::BBDD_USUARIO, Config::BBDD_CLAVE, Config::BBDD_NOMBRE, Config::BBDD_PORT);
         $sql = "SELECT idcliente,
@@ -123,13 +124,15 @@ class Cliente //Es POO por eso la clase comienza en mayuscula y las entidades en
                         fk_idprovincia,
                         fk_idlocalidad,
                         domicilio
-                FROM clientes
+                FROM clientes 
                 WHERE idcliente = $this->idcliente";
+               // print_r($sql);
+                // exit;
         if (!$resultado = $mysqli->query($sql)) {
             printf("Error en query: %s\n", $mysqli->error . " " . $sql);
         }
 
-        //Convierte el resultado en un array asociativo
+        #Convierte el resultado en un array asociativo
         if ($fila = $resultado->fetch_assoc()) {
             $this->idcliente = $fila["idcliente"];
             $this->nombre = $fila["nombre"];
@@ -171,7 +174,6 @@ class Cliente //Es POO por eso la clase comienza en mayuscula y las entidades en
             //Convierte el resultado en un array asociativo
 
             while($fila = $resultado->fetch_assoc()){
-                
                 $entidadAux = new Cliente();
                 $entidadAux->idcliente = $fila["idcliente"];
                 $entidadAux->nombre = $fila["nombre"];
