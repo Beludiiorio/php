@@ -33,7 +33,7 @@ class TipoProducto {
                     nombre
                    
                 ) VALUES (
-                    '$this->nombre'
+                    '".$this->nombre. "'
                 );";
         //Ejecuta la query
         if (!$mysqli->query($sql)) {
@@ -49,7 +49,7 @@ class TipoProducto {
 
         $mysqli = new mysqli(Config::BBDD_HOST, Config::BBDD_USUARIO, Config::BBDD_CLAVE, Config::BBDD_NOMBRE, Config::BBDD_PORT);
         $sql = "UPDATE tipo_productos SET
-                nombre = '$this->nombre'
+                nombre = '".$this->nombre."'
 
         WHERE idtipoproducto = " . $this->idtipoproducto;
 
@@ -74,7 +74,7 @@ $mysqli->close();
         $mysqli = new mysqli(Config::BBDD_HOST, Config::BBDD_USUARIO, Config::BBDD_CLAVE, Config::BBDD_NOMBRE, Config::BBDD_PORT);
         $sql = "SELECT idtipoproducto, 
                         nombre
-                FROM tipo_productos 
+                FROM tipo_productos
                 WHERE idtipoproducto = " . $this->idtipoproducto;
         if (!$resultado = $mysqli->query($sql)) {
             printf("Error en query: %s\n", $mysqli->error . " " . $sql);
@@ -82,17 +82,19 @@ $mysqli->close();
 
         //Convierte el resultado en un array asociativo
         if($fila = $resultado->fetch_assoc()){
-            $this->idtipoproducto = $fila["idtipoproducto"];
             $this->nombre = $fila["nombre"];
 
         }
         $mysqli->close();
     }
+
+    
     public function obtenerTodos(){
         $mysqli = new mysqli(Config::BBDD_HOST, Config::BBDD_USUARIO, Config::BBDD_CLAVE, Config::BBDD_NOMBRE, Config::BBDD_PORT);
         $sql = "SELECT 
                     idtipoproducto,
                     nombre
+
                 FROM tipo_productos";
         if (!$resultado = $mysqli->query($sql)) {
             printf("Error en query: %s\n", $mysqli->error . " " . $sql);

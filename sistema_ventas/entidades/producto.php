@@ -30,14 +30,12 @@ class Producto
     {
         $this->idproducto = isset($request["id"]) ? $request["id"] : "";
         $this->nombre = isset($request["txtNombre"]) ? $request["txtNombre"] : "";
-        $this->cantidad = isset($request["txtCantida"]) ? $request["txtCantida"] : "";
+        $this->cantidad = isset($request["txtCantidad"]) ? $request["txtCantidad"] : "";
         $this->precio = isset($request["txtPrecio"]) ? $request["txtPrecio"] : "";
         $this->descripcion = isset($request["txtDescripcion"]) ? $request["txtDescripcion"] : "";
         $this->imagen = isset($request["img"]) ? $request["img"] : "";
         $this->fk_idtipoproducto = isset($request["lstProducto"]) ? $request["lstProducto"] : "";
-        if (isset($request["txtAnioNac"]) && isset($request["txtMesNac"]) && isset($request["txtDiaNac"])) {
-            $this->fecha_nac = $request["txtAnioNac"] . "-" . $request["txtMesNac"] . "-" . $request["txtDiaNac"];
-        }
+       
     }
 
     public function insertar()
@@ -54,19 +52,20 @@ class Producto
                     fk_idtipoproducto
                 ) VALUES (
                     '$this->nombre',
-                    '$this->canitdad',
-                    '$this->precio',
+                    $this->cantidad, 
+                    $this->precio,
                     '$this->descripcion',
                     '$this->imagen',
                     $this->fk_idtipoproducto
-                );";
+
+                );"; #Comillas van solo para los string
         // print_r($sql);exit;
         //Ejecuta la query
         if (!$mysqli->query($sql)) {
             printf("Error en query: %s\n", $mysqli->error . " " . $sql);
         }
         //Obtiene el id generado por la inserción
-        $this->idcliente = $mysqli->insert_id;
+        $this->idproducto = $mysqli->insert_id;
         //Cierra la conexión
         $mysqli->close();
     }
@@ -77,11 +76,11 @@ class Producto
         $mysqli = new mysqli(Config::BBDD_HOST, Config::BBDD_USUARIO, Config::BBDD_CLAVE, Config::BBDD_NOMBRE, Config::BBDD_PORT);
         $sql = "UPDATE clientes SET
                 nombre = '" . $this->nombre . "',
-                cantidad = '" . $this->cantidad . "',
-                precio = '" . $this->precio . "',
+                cantidad = " . $this->cantidad . ",
+                precio = " . $this->precio . ",
                 descripcion = '" . $this->descripcion . "',
                 imagen =  '" . $this->imagen . "',
-                fk_idtipoproducto =  '" . $this->fk_idtipoproducto . "',
+                fk_idtipoproducto =  '" . $this->fk_idtipoproducto . "'
                 WHERE idproducto = " . $this->idproducto;
 
         if (!$mysqli->query($sql)) {
@@ -104,12 +103,13 @@ class Producto
     public function obtenerPorId()
     {
         $mysqli = new mysqli(Config::BBDD_HOST, Config::BBDD_USUARIO, Config::BBDD_CLAVE, Config::BBDD_NOMBRE, Config::BBDD_PORT);
-        $sql = "SELECT nombre,
-                     cantidad,
-                       precio,
-                  descripcion,
-                       imagen,
-            fk_idtipoproducto
+        $sql = "SELECT idproducto, 
+                       nombre,
+                       cantidad,
+                      precio,
+                      descripcion,
+                      imagen,
+                     fk_idtipoproducto
                 FROM productos
                 WHERE idproducto = $this->idproducto";
         if (!$resultado = $mysqli->query($sql)) {
@@ -154,7 +154,8 @@ class Producto
                 $entidadAux->idproducto = $fila["idproducto"];
                 $entidadAux->nombre = $fila["nombre"];
                 $entidadAux->cantidad = $fila["cantidad"];
-                $entidadAux->precio = $fila["descripcion"];
+                $entidadAux->precio = $fila["precio"];
+                $entidadAux->descripcion = $fila["descripcion"];
                 $entidadAux->imagen = $fila["imagen"];
                 $entidadAux->fk_idtipoproducto = $fila["fk_idtipoproducto"];
                 $aResultado[] = $entidadAux;
@@ -163,5 +164,3 @@ class Producto
         return $aResultado;
     }
 }
-
-?>

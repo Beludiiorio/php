@@ -2,10 +2,10 @@
 
 include_once "config.php";  //Incluye el archivo de configuracion
 include_once "entidades/venta.php";  //Incluye la entidad 
-$pg = "Listado de ventas"; //Es el titulo de la pagina
+$pg = "Listado de Ventas"; //Es el titulo de la pagina
 
 $venta = new Venta(); //Crea el objeto Venta para llamar al metodo obtenerTodos 
-$aVentas = $venta->cargarGrilla();  //Nos trae todas las ventas de la base de datos
+$aVentas = $venta->obtenerTodos();  //Nos trae todas las ventas de la base de datos
 
 include_once("header.php");  //Incluye el header
 ?>
@@ -18,7 +18,7 @@ include_once("header.php");  //Incluye el header
           <h1 class="h3 mb-4 text-gray-800">Listado de ventas</h1>
           <div class="row">
               <div class="col-12 mb-3">
-                  <a href="venta-formulario.php" class="btn btn-primary mr-2">Nuevo</a>
+                  <a href="tipoproducto-formulario.php" class="btn btn-primary mr-2">Nuevo</a>
               </div>
           </div>
           <table class="table table-hover border">
@@ -33,12 +33,13 @@ include_once("header.php");  //Incluye el header
             </tr>
             <?php foreach ($aVentas as $venta): ?>
               <tr>
-                  <td><?php echo date_format(date_create($venta->fecha), "d/m/Y H:m"); ?></td>
+                  <td><?php echo $venta->fecha; ?></td>
                   <td><?php echo $venta->cantidad; ?></td>
-                  <td><a href="producto-formulario.php?id=<?php echo $venta->fk_idproducto; ?>"><?php echo $venta->nombre_producto; ?></a></td>
-                  <td><a href="cliente-formulario.php?id=<?php echo $venta->fk_idcliente; ?>"><?php echo $venta->nombre_cliente; ?></a></td>
-                  <td>$ <?php echo number_format($venta->total, 2, ',', '.'); ?></td>
-                  <td>
+                  <td><?php echo $venta->fk_idproducto; ?></td>
+                  <td><?php echo $venta->fk_idcliente; ?></td>
+                  <td><?php echo $venta->total; ?></td>
+                  
+                  <td style= "width: 110px;">
                       <a href="venta-formulario.php?id=<?php echo $venta->idventa; ?>"><i class="fas fa-search"></i></a>   
                   </td>
               </tr>

@@ -7,12 +7,12 @@ include_once "entidades/provincia.php";
 include_once "entidades/localidad.php";
 
 $cliente = new Cliente();
-$cliente->cargarFormulario($_REQUEST);
+$cliente->cargarFormulario($_REQUEST); #Obtiene los datos que vienen desde el formulario
 
 $pg = "Listado de clientes";
 
 if($_POST){
-    if(isset($_POST["btnGuardar"])){
+    if(isset($_POST["btnGuardar"])){ #Si hizo click en el boton guardar habra dos escenarios:
         if(isset($_GET["id"]) && $_GET["id"] > 0){
               //Actualizo un cliente existente
               $cliente->actualizar();

@@ -4,15 +4,16 @@ include_once "config.php";
 include_once "entidades/tipoproducto.php";
 
 
-$tipoProducto = new TipoProducto(); //Crea el objeto cliente
+$tipoProducto = new TipoProducto(); //Crea el objeto cliente 
 $tipoProducto->cargarFormulario($_REQUEST); //$_REQUEST obtiene los datos que vienen desde el $_POST (carga el formulario y el id que vino por query string)
+
 
 $pg = "Listado de tipo de productos";
 
 if ($_POST) {
     if (isset($_POST["btnGuardar"])) { //Si el cliente es nuevo, lo estoy actualizando o insertando
         if (isset($_GET["id"]) && $_GET["id"] > 0) {
-            //Actualizo un cliente existente
+            //Actualizo un tipoProducto existente
             $tipoProducto->actualizar();
         } else {
             //Es nuevo
@@ -25,9 +26,10 @@ if ($_POST) {
         header("Location: tipoproducto-listado.php");
     }
 }
-if (isset($_GET["id"]) && isset($_GET["id"]) > 0) {
+if(isset($GET["id"]) &&  $_GET ["id"]> 0) {
     $tipoProducto->obtenerPorId();
 }
+
 
 include_once("header.php");
 ?>
@@ -67,4 +69,4 @@ include_once("header.php");
 </div>
 <!-- End of Main Content -->
 
-<?php include_once("footer.php"); ?>
+<?php include_once("footer.php"); ?> 
