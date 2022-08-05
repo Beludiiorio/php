@@ -129,7 +129,7 @@ include_once "header.php";
             <input type="text" class="form-control" name="txtPrecio" id="txtPrecio" value="<?php echo $producto->precio; ?>">
         </div>
         <div class="col-12 form-group">
-            <label for="txtCorreo">Descripción:</label>
+            <label for="txtDescripcion">Descripción:</label>
             <textarea type="text" name="txtDescripcion" id="txtDescripcion"><?php echo $producto->descripcion; ?></textarea>
         </div>
         <div class="col-6 form-group">
