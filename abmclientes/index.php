@@ -25,7 +25,12 @@ if (isset($_GET["id"])){
 
 #Si es eliminar:
 if(isset($_GET["do"]) && $_GET["do"] == "eliminar") { #El GET accede a toda la query string
-
+        
+        if (file_exists("imagenes/" .$aClientes[$id]["imagen"])){ 
+            if (is_file("imagenes/" .$aClientes[$id]["imagen"])){
+                unlink("imagenes/" .$aClientes[$id]["imagen"]);
+            }
+        }
     #Elimino la posición $aClientes[$id]:
     unset($aClientes[$id]);
 
@@ -179,3 +184,4 @@ if($_POST){
     </main>
 </body>
 </html>
+
